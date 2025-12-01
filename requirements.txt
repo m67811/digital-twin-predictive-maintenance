@@ -1,0 +1,10 @@
+numpy
+pandas
+scipy
+matplotlib
+scikit-learn
+torch
+statsmodels
+# Optional: remove if you do not need tree ensembles beyond scikit-learn
+xgboost
+pytest

@@ -1,0 +1,25 @@
+@startuml
+title Digital Twin Experiment Design
+
+actor Operator
+rectangle "Equipment Pool" as pool
+rectangle "Assignment" as assign
+rectangle "Control Group\nPreventive Maintenance" as control
+rectangle "Experimental Group\nAI/Digital Twin\nPredictive Maintenance" as experiment
+database "Metrics DB" as db
+rectangle "Statistical Analysis\n(t-test / Mann-Whitney)" as stats
+rectangle "Reports & Plots" as reports
+
+Operator --> pool
+pool --> assign : random split
+assign --> control
+assign --> experiment
+
+control --> db : uptime, failures,\nenergy, quality
+experiment --> db : uptime, failures,\nenergy, quality\n+ anomaly scores
+
+db --> stats
+stats --> reports
+reports --> Operator
+
+@enduml
